@@ -1,3 +1,4 @@
+
 const Condominium = require('../models/Condominium');
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');

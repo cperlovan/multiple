@@ -1,5 +1,5 @@
 //Ojo no está en uso lo unifiqué dentro del middleware de condominiumAccess
- const validateCondominiumId = async (req, res, next) => {
+const validateCondominiumId = async (req, res, next) => {
   const { condominiumId } = req.params;
   console.log("este es el params de validate condominium id: ", JSON.stringify(req.params));
 

@@ -25,5 +25,6 @@ router.post('/complete-profile', auth, supplierController.completeProfile);
 router.put('/:supplierId', auth, supplierController.updateSupplier);
 router.delete('/:supplierId', auth, supplierController.deleteSupplier);
 
+router.get('/user/:userId', auth, supplierController.getSupplierByUserId);
 
 module.exports = router;

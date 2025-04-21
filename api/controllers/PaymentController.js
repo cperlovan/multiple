@@ -239,6 +239,3 @@ exports.verifyPayment = async (req, res) => {
     res.status(500).json({ message: 'Error al verificar el pago.', error: error.message });
   }
 };
-
-
-

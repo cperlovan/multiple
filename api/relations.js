@@ -78,4 +78,3 @@ Supplier.belongsTo(User, { foreignKey: 'userId' });
 // Relación entre ReserveFund y ReserveFundContribution
 ReserveFund.hasMany(ReserveFundContribution, { foreignKey: 'reserveFundId' });
 ReserveFundContribution.belongsTo(ReserveFund, { foreignKey: 'reserveFundId' });
-

@@ -171,6 +171,44 @@ const getActivitiesBySupplier = async (req, res) => {
   }
 };
 
+// ... existing code ...
+
+// Obtener proveedor por ID de usuario
+const getSupplierByUserId = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    console.log('Buscando proveedor para usuario:', userId);
+
+    const supplier = await Supplier.findOne({
+      where: { userId },
+      include: [
+        {
+          model: User,
+          attributes: ['id', 'name', 'lastname', 'email', 'status'],
+        },
+        {
+          model: EconomicActivity,
+          through: { attributes: [] },
+          attributes: ['id', 'name', 'description'],
+        },
+      ],
+    });
+
+    if (!supplier) {
+      console.log('No se encontró perfil de proveedor para el usuario:', userId);
+      return res.status(404).json({ message: 'Proveedor no encontrado' });
+    }
+
+    console.log('Perfil de proveedor encontrado:', supplier);
+    res.json(supplier);
+  } catch (error) {
+    console.error('Error al buscar proveedor:', error);
+    res.status(500).json({ message: 'Error al buscar el proveedor' });
+  }
+};
+
+
+
 // Controlador para completar el perfil de proveedor
 const completeProfile = async (req, res) => {
   try {
@@ -372,4 +410,5 @@ module.exports = {
   completeProfile,
   updateSupplier,
   deleteSupplier,
+  getSupplierByUserId
 };

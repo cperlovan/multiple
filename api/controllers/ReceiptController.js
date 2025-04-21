@@ -189,4 +189,3 @@ exports.deleteReceipt = async (req, res) => {
     res.status(500).json({ message: 'Error al eliminar el recibo.', error: error.message });
   }
 };
-
