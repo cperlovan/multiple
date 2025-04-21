@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "buildCommand": "npm install pg@8.13.3 --save && npm install",
+  "builds": [
+    { "src": "index.js", "use": "@vercel/node" },
+    { "src": "api/register-simple.js", "use": "@vercel/node" },
+    { "src": "api/register-fallback.js", "use": "@vercel/node" },
+    { "src": "api/test.js", "use": "@vercel/node" },
+    { "src": "api/db-status.js", "use": "@vercel/node" },
+    { "src": "api/condominium-selector.js", "use": "@vercel/node" },
+    { "src": "api/register-provider.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/api/auth/register", "dest": "/api/register-simple.js" },
+    { "src": "/api/debug/register", "dest": "/api/register-fallback.js" },
+    { "src": "/api/test", "dest": "/api/test.js" },
+    { "src": "/api/db-status", "dest": "/api/db-status.js" },
+    { "src": "/api/condominium/selector", "dest": "/api/condominium-selector.js" },
+    { "src": "/api/provider/register", "dest": "/api/register-provider.js" },
+    { "src": "/(.*)", "dest": "/index.js" }
+  ],
+  "env": {
+    "NODE_ENV": "production",
+    "DB_SSL": "true",
+    "VERCEL": "1",
+    "FRONTEND_URL": "https://enlazados.vercel.app"
+  }
+}  
